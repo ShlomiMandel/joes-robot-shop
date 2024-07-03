@@ -189,6 +189,21 @@ export class CatalogComponent {
     ];
   }
 
+  getDiscountedClasses(product: IProduct) {
+    //return { strikethrough: product.discount > 0 }; // return class
+
+    // // return string of classes
+    // if (product.discount > 0)
+    //   return 'strikethrough'; // => 'strikethrough another-class'
+    // else
+    //   return '';
+
+    // return array of classes
+    if (product.discount > 0)
+      return ['strikethrough']; // => ['strikethrough', 'another-class', 'yet-another-class']
+    else
+      return [];
+  }
 
   // return the product image URL
   getImageUrl(product: IProduct) {
