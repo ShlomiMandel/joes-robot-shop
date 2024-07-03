@@ -21,7 +21,10 @@
                 </div>
                 <div class="price">
                     <!-- <div [class.strikethrough]="product.discount > 0">      class binding -->
-                    <div class="bold" [ngClass]="getDiscountedClasses(product)"> <!--NG class binding-->
+                    <!-- <div [ngClass]="getDiscountedClasses(product)"> NG class binding -->
+                    <div [ngStyle]="{ 'color' : product.discount > 0 ? 'red' : ''}"
+                        [ngClass]="getDiscountedClasses(product)">
+                        <!--NgStyle-->
                         {{ product?.price | currency }}
                     </div>
                     <div *ngIf="product.discount > 0" class="discount">
