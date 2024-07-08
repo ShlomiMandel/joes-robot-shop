@@ -9,6 +9,7 @@ import { IProduct } from './product.model';
 export class CatalogComponent {
   products: IProduct[];
   filter: string = '';
+  cart: IProduct[] = [];
 
   constructor() {
     // initialize the products array
@@ -189,6 +190,11 @@ export class CatalogComponent {
     ];
   }
 
+  addToCart(product: IProduct) {
+    this.cart.push(product);
+    console.log('product ' + product.name + ' added to cart');
+  }
+
   getDiscountedClasses(product: IProduct) {
     //return { strikethrough: product.discount > 0 }; // return class
 
@@ -205,11 +211,7 @@ export class CatalogComponent {
       return [];
   }
 
-  // return the product image URL
-  getImageUrl(product: IProduct) {
-    if (!this.products) return '';
-    return '/assets/images/robot-parts/' + product.imageName;
-  }
+
 
   getFilteredProducts() {
     return this.filter === ''
