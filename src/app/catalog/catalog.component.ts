@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IProduct } from './product.model';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'bot-catalog',
@@ -9,9 +10,9 @@ import { IProduct } from './product.model';
 export class CatalogComponent {
   products: IProduct[];
   filter: string = '';
+  //private cartSvc: CartService = inject(CartService); // inject the CartService - insted of using the constructor
 
-
-  constructor() {
+  constructor(private cartSvc: CartService) {
     // initialize the products array
     this.products = [
       {
@@ -191,7 +192,7 @@ export class CatalogComponent {
   }
 
   addToCart(product: IProduct) {
-
+    this.cartSvc.add(product);
   }
 
   getDiscountedClasses(product: IProduct) {
