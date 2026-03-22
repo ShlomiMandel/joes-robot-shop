@@ -18,7 +18,6 @@ export class ProductDetailsComponent {
   }
 
   addToCart(event: MouseEvent) {
-    //setTimeout(() => this.availableInventory.set(this.availableInventory() - 1), 100);
     setTimeout(() => this.availableInventory.update((p) => p - 1), 3000);
     console.log(event);
   }
